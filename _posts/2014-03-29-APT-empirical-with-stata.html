@@ -1,0 +1,256 @@
+---
+layout: reveal
+title:  "With Stata: APT Empirical Test  -- Based on Factor Analysis"
+date:   2014-03-29 16:41:09
+categories: stataclub studygroup
+---
+
+<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>With Stata: </h1>
+					<h3>APT Empirical Test</h3>
+					<p>
+						<small>Stata协会学术组</small>
+					</p>
+					<p>
+						<small>中南财经政法大学</small>
+					</p>
+				</section>
+
+				<section>
+					<section>
+					    <h3>数据准备</h3>
+                        <p>请给我上交所上市A股所有股票，自上市以来的日收益率。</p>
+                        <ul>
+                            <li class="fragment roll-in">截至2014-03-19: <strong>948</strong>支股票</li>
+                            <li class="fragment roll-in">合并在一个二维表中，日期要对齐</li>
+					    </ul>
+					    <aside class="notes">日期对齐的含义</aside>
+					</section>
+					<section>
+						<h3>超级武器</h3>
+						<p><code>cntrade</code>是下载中国股票交易数据的利器</p>
+				        <p>只需要提供股票代码，就可以把价格数据下载保存</p>
+					</section>
+					<section>
+						<h3>配备超武</h3>
+						<p>打开你的<code>Stata</code>, 在命令窗口中运行以下命令（需要联网）：</p>
+						<p><pre><code>ssc install cntrade</code></pre></p>
+					</section>
+					<section>
+						<h3>使用说明</h3>
+						<p>语法: <code>cntrade codelist, [options]</code></p>
+						<p>Examples:</p>
+						<pre class="fragment roll-in"><code>. cntrade 600000
+. cntrade 600000, path(c:/temp/)
+. cntrade 2, path(c:/temp/)
+. cntrade 600000 000001 600810
+. cntrade 2 16
+                        </code></pre>
+						<aside class="notes">
+						<ul>
+						    <li>关于股票代码</li>
+						    <li>演示(Help, example)</li>
+						    <li>解释各个列</li>
+						    <li>保存到哪里去了? pwd cd</li>
+						</ul>
+						</aside>
+					</section>
+					<section>
+					    <h3>Q: 自动下载大量股票的数据？</h3>
+					    <p class="fragment roll-in">提示： 查阅<code>levelsof</code>命令</p>
+					    <pre class="fragment roll-in"><code>levelsof tick, local(ticks)
+
+foreach tick of local ticks {
+	cntrade `tick'
+}
+					    </code></pre>
+					    <aside class="notes">Lead in: 
+					    <ul>
+					        <li>Syntax of foreach</li>
+					        <li>thinking in loops: cntrade, then add foreach. </li>
+					        <li>AT LAST: show levelsof</li>
+					    </ul>
+					    </aside>
+					</section>
+					
+					
+				</section>
+				
+				<section>
+				    <section>
+					    <h3>合并数据，日期对齐</h3>
+					    <p>合并数据集时:</p>
+					    <ul>
+					        <li class="fragment roll-in">增加变量个数的操作，使用的命令是<code>merge</code></li>
+					        <li class="fragment roll-in">增加观测值个数的操作，使用的命令是<code>append</code></li>
+					    </ul>
+					</section>
+					<section>
+					    <h3>merge的用法</h3>
+					    <p>以下代码有何问题？ </p>
+					    <pre><code>cntrade 1
+cntrade 2
+merge 1:1 using 000001
+					    </code></pre>
+					</section>
+					<section>
+					    <h3>为合并数据所做的准备</h3>
+					    <ul>
+					        <li class="fragment roll-in">删除不需要的变量</li>
+					        <li class="fragment roll-in">对需要的变量进行必要的重命名</li>
+					    </ul>
+					    <pre class="fragment roll-in"><code>cntrade 1
+					    keep date rit
+					    rename rit rit000001
+cntrade 2
+keep date rit
+rename rit rit000002
+merge 1:1 using 000001
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>与第一步的循环整合</h3>
+                        <pre><code>foreach tick of local ticks {
+cntrade `tick'
+keep date rit
+rename rit rit`tick'
+
+merge 1:1 date using ????????
+
+}
+</code></pre>
+                    </section>
+                    <section>
+                        <h3>与第一步整合</h3>
+                        <p>如何解决刚才的问题？</p>
+                        <ul>
+                            <li>单独下载处理第一支股票</li>
+                            <li>给Stata一个“提示”，是保存还是合并</li>
+                        </ul>
+                        </section>
+                        <section>
+                        <h3>Solution</h3>
+                        <pre><code>local merged_exist 0
+
+foreach tick of local ticks {
+	cntrade `tick', start("1999-01-01")
+	keep date rit
+	rename rit rit`tick'
+
+	if `merged_exist' {
+		merge 1:1 date using bowl.dta, nogenerate
+		save bowl.dta, replace
+	}
+	else {
+		save bowl.dta
+		local merged_exist = 1
+	}
+}
+                        </code></pre>
+                    </section>
+			    </section>
+                <section>
+				    <section>
+					    <h2>APT实证检验</h2>
+					    <ol>
+					        <li>因子分析法得到因子</li>
+						    <li>回归验证APT模型</li>
+				        </ol>
+				    </section>
+				    <section>
+				        <h3>因子分析</h3>
+				        <pre><code>factor rit600000-rit600100, ml
+estat kmo
+
+rotate
+screeplot
+
+loadingplot
+
+predict f1 f2 f3
+                        </code></pre>
+                    </section>
+                    <section>
+                    <h3>回归</h3>
+                    <pre><code>regress rit600000 f1-f3
+                    </code></pre>
+                    <aside class="notes">
+                        <p>problems: count if f1<pre><</pre>.</p>
+                    </section>
+                </section>
+				
+	
+
+
+				<section>
+				    <section>
+					    <h2>Candy</h2>
+					    <ul>
+						    <li>如何获得周/月/季度数据？</li>
+						    <li>“固定”的“随机”数</li>
+						    <li>重现历史+与时俱进</li>
+					    </ul>
+					</section>
+					<section>
+					    <h3>时间序列数据频率转换</h3>
+					    <p>Hint: collapse</p>
+					    <aside class="notes">weekly</aside>
+					</section>
+					<section>
+					    <h3>“固定”的“随机”数</h3>
+					    <p>Hint: set seed</p>
+					</section>
+					<section>
+					    <h3>重现历史+与时俱进</h3>
+					    <ul>
+					        <li>代码中界定使用的数据范围</li>
+					        <li>未扩展使用的数据集提供方便</li>
+					    </ul>
+				</section>
+
+				<section>
+					<h1>THE END</h1>
+					<h3>BY Kongs</h3>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="/lib/js/head.min.js"></script>
+		<script src="/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: false,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+

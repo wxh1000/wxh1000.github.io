@@ -12,6 +12,9 @@ textile_ext:   textile
 
 excerpt_separator: "\n\n"
 
+baseurl:     /tjekyll
+
+
 maruku:
   use_tex:    false
   use_divs:   false
@@ -33,7 +36,7 @@ kramdown:
   entity_output: as_char
   toc_levels: 1..6
   smart_quotes: lsquo,rsquo,ldquo,rdquo
-  use_coderay: false
+  use_coderay: true
 
   coderay:
     coderay_wrap: div
@@ -47,7 +50,7 @@ redcloth:
   hard_breaks: true
 
 
-name: kongs
+name: Aeol Kong
 pygments: true
 
 safe: true
