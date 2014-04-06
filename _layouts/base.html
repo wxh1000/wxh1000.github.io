@@ -1,0 +1,63 @@
+---
+
+---
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{{ page.title }}</title>
+        <meta name="description" content="{{ page.description }}">
+        <meta name="author" content="{{ site.data.meta.author }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="/css/normalize.css">
+        <link rel="stylesheet" href="/css/main.css">
+        <script src="/js/vendor/modernizr-2.6.2.min.js"></script>
+
+        <link rel="stylesheet" href="/css/style.css">
+
+        <!-- Mahtjax support, enabled by set mathjax in front matter -->
+        {% if page.mathjax %}
+        	{% include mathjax.html %}
+        {% endif %}
+    </head>
+    <body>
+    	<div id="container">
+            <div id="main" role="main">
+		        {% include b_old_browser.html %}
+
+                <header>
+                    <h1>{{ page.title }}</h1>
+                </header>
+                <nav>
+                    <span><a title="home page" class="" href="{{ site.url }}/">home</a></span>
+                    <span><a title="about" class="" href="{{ site.url }}/about/">about</a></span>
+                    <!-- <span><a title="publication" class="" href="{{ site.url }}/publication/">publication</a></span> -->
+                    <span><a title="guestbook" class="" href="{{ site.url }}/guestbook/">guestbook</a></span>
+                    <!-- <span><a title="vitae" class="" href="{{ site.url }}/vitae/">vitae</a></span> -->
+                    <span><a title="categories" class="" href="{{ site.url }}/categories/">categories</a></span>
+                    <span><a title="tags" class="" href="{{ site.url }}/tags/">tags</a></span>
+                    <!-- <span><a title="links" class="" href="{{ site.url }}/links/">links</a></span> -->
+                    <span><a title="subscribe by RSS" class="" href="{{ site.url }}/feed/">subscribe</a></span>
+                </nav>
+
+                <article class="content">
+                {{ content }}
+                </article>
+
+		        {% if page.comments %}
+					{% include comments.html %}
+				{% endif %}
+
+		    </div>
+		</div>
+		{% include b_body_scripts.html %}
+    </body>
+</html>
