@@ -1,57 +1,37 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>{{ page.title }}</title>
-        <meta name="viewport" content="width=device-width">
-
-        <!-- syntax highlighting CSS -->
-        <link rel="stylesheet" href="{{ site.baseurl }}/css/syntax.css">
-
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="{{ site.baseurl }}/css/style.css">
-
-        <script type="text/x-mathjax-config">
-          MathJax.Hub.Config({
-            extensions: ["tex2jax.js"],
-            jax: ["input/TeX", "output/HTML-CSS"],
-            tex2jax: {
-              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-              displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-              processEscapes: true
-            },
-            "HTML-CSS": { availableFonts: ["TeX"] }
-          });
-        </script>
-        
-        <script type="text/javascript"
-   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-   
+        {% include b_header %}
     </head>
     <body>
+        <div id="container">
+            <div id="main" role="main">
+                {% include b_old_browser %}
 
-    <div id="container">
-      <div id="main" role="main">
-        <header>
-        <h1>{{ page.title }}</h1>
-        </header>
-        <nav>
-        <span><a title="home page" class="" href="{{ site.url }}/">home</a></span>
-        <span><a title="about" class="" href="{{ site.url }}/about/">about</a></span>
-        <span><a title="publication" class="" href="{{ site.url }}/publication/">publication</a></span>
-        <span><a title="guestbook" class="" href="{{ site.url }}/guestbook/">guestbook</a></span>
-        <span><a title="vitae" class="" href="{{ site.url }}/vitae/">vitae</a></span>
-        <span><a title="categories" class="" href="{{ site.url }}/categories/">categories</a></span>
-        <span><a title="tags" class="" href="{{ site.url }}/tags/">tags</a></span>
-        <span><a title="links" class="" href="{{ site.url }}/links/">links</a></span>
-        <span><a title="subscribe by RSS" class="" href="{{ site.url }}/feed/">subscribe</a></span>
-        </nav>
-        <article class="content">
-        {{ content }}
-        </article>
-      </div>
-    </div>
+                
+                <header>
+                <h1>{{ page.title }}</h1>
+                </header>
+                <nav>
+                <span><a title="home page" class="" href="{{ site.url }}/">home</a></span>
+                <span><a title="about" class="" href="{{ site.url }}/about/">about</a></span>
+                <span><a title="publication" class="" href="{{ site.url }}/publication/">publication</a></span>
+                <span><a title="guestbook" class="" href="{{ site.url }}/guestbook/">guestbook</a></span>
+                <span><a title="vitae" class="" href="{{ site.url }}/vitae/">vitae</a></span>
+                <span><a title="categories" class="" href="{{ site.url }}/categories/">categories</a></span>
+                <span><a title="tags" class="" href="{{ site.url }}/tags/">tags</a></span>
+                <span><a title="links" class="" href="{{ site.url }}/links/">links</a></span>
+                <span><a title="subscribe by RSS" class="" href="{{ site.url }}/feed/">subscribe</a></span>
+                </nav>
+                <article class="content">
+                {{ content }}
+                </article>
+          </div>
+        </div>
 
+        {% include b_body_footer %}
     </body>
 </html>
