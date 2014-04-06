@@ -51,11 +51,13 @@
 
                 <article class="content">
                 {{ content }}
+
+                {% if page.comments %}
+                    {% include comments.html %}
+                {% endif %}
                 </article>
 
-		        {% if page.comments %}
-					{% include comments.html %}
-				{% endif %}
+		        
 
 		    </div>
 		</div>
