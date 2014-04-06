@@ -3,6 +3,7 @@ layout: post
 title:  "Try Math inside jekyll!"
 date:   2014-03-22 16:41:09
 categories: jekyll test
+mathjax: true
 ---
 
 # Test math equations
