@@ -27,7 +27,7 @@ source code in $\LaTeX$:
 
 ### Python
 
-{% highlight ruby %}
+{% highlight python %}
 def spam(i, j, k):
 	return i * j - k
 {% endhighlight %}

@@ -1,20 +1,37 @@
-        <script src="/js/plugins.js"></script>
-        <script src="/js/main.js"></script>
+{% if page.mathjax %}
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+{% endif %}
 
-        <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
-        {% for lan in page.languages %}
-        <script src="http://yandex.st/highlightjs/8.0/languages/{{ lan }}.min.js"></script>
-        {% endfor %}
 
-        <script>hljs.initHighlightingOnLoad();</script>
-        
+<script>
+    head.load("http://yandex.st/highlightjs/8.0/styles/{{ page.hlstyle }}.min.css");
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-33189838-2');ga('send','pageview');
-        </script>
+    head.load("http://yandex.st/highlightjs/8.0/highlight.min.js", {% for lan in page.languages %} "http://yandex.st/highlightjs/8.0/languages/{{ lan }}.min.js", {% endfor %} function() {
+        hljs.initHighlightingOnLoad();
+    });
+
+    {% if page.mathjax %}
+    head.load('http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML')
+    {% endif %}
+</script>
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script>
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+    e.src='//www.google-analytics.com/analytics.js';
+    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-33189838-2');ga('send','pageview');
+</script>
