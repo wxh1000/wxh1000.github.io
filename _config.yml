@@ -2,16 +2,14 @@
 highlighter: pygments
 
 relative_permalinks: true
+permalink:   /blog/:year/:month/:day/:title.html
 
-permalink:     date
 paginate_path: 'page:num'
 
 markdown:      kramdown # redcarpet
 markdown_ext:  markdown,mkdown,mkdn,mkd,md
 textile_ext:   textile
 
-baseurl:     /
-permalink:   /blog/:year/:month/:day/:title.html
 
 excerpt_separator: "\n\n"
 
