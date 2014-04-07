@@ -21,8 +21,8 @@ categories: test
 					<h1>Test page</h1>
 					### this should be 3rd title
 					{% highlight python %}
-					def func():
-						return 'hi!'
+def func():
+	return 'hi!'
 					{% endhighlight %}
 					<p>
 						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
