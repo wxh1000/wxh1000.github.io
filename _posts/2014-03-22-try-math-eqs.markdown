@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Try Math inside jekyll!"
-date:   2014-03-22 16:41:09
-categories: jekyll test
+date:   2014-03-22 18:41:09
+categories: test
 mathjax: true
 ---
 

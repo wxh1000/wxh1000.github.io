@@ -2,7 +2,13 @@
 layout: impress
 title:  "FDI New Trends -- working slides"
 date:   2014-03-28 16:41:09
-categories: jekyll test impress
+categories: 
+    - workings
+    - slides
+    - test category
+tags:
+    - FDI
+    - 国际投资
 ---
 
 
