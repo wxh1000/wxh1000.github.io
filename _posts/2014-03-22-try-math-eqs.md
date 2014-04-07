@@ -4,6 +4,9 @@ title:  "Try Math inside jekyll!"
 date:   2014-03-22 18:41:09
 categories: test
 mathjax: true
+languages:
+  - matlab
+  - r
 ---
 
 # Test math equations

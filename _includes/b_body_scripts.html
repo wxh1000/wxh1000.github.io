@@ -1,6 +1,14 @@
         <script src="/js/plugins.js"></script>
         <script src="/js/main.js"></script>
 
+        <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+        {% for lan in page.languages %}
+        <script src="http://yandex.st/highlightjs/8.0/languages/{{ lan }}.min.js"></script>
+        {% endfor %}
+
+        <script>hljs.initHighlightingOnLoad();</script>
+        
+
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
