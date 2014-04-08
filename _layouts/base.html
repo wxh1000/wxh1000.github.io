@@ -1,6 +1,5 @@
 ---
-type: general
-hlstyle: github
+hlstyledf: github
 ---
 
 <!doctype html>
@@ -26,7 +25,7 @@ hlstyle: github
 
 
 		{% if page.type == 'impress' %}
-		<script src="/lib/js/head.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/headjs/1.0.3/head.min.js"></script>
 		<link href="/css/impress-demo.css" rel="stylesheet" />
 		{% endif %}
 		
@@ -34,7 +33,7 @@ hlstyle: github
 		{% if page.type == 'reveal' %}
 		<link rel="stylesheet" href="/css/reveal/reveal.min.css">
 		<link rel="stylesheet" href="/css/reveal/theme/default.css" id="theme">
-		<script src="/lib/js/head.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/headjs/1.0.3/head.min.js"></script>
 		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
 		<script>
 			if( window.location.search.match( /print-pdf/gi ) ) {
@@ -60,6 +59,6 @@ hlstyle: github
 
 		{{ content }}
 
-		{% include b_body_scripts.html %}
+		{% include body_scripts.html %}
 	</body>
 </html>
