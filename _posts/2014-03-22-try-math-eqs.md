@@ -2,7 +2,7 @@
 layout: post
 title:  "Try Math inside jekyll!"
 date:   2014-03-22 18:41:09
-categories: test
+categories: demo
 mathjax: true
 languages:
   - matlab

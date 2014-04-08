@@ -2,9 +2,8 @@
 layout: reveal
 title:  "Try reveal"
 date:   2014-03-28 11:41:09
-categories: test
+categories: demo
 ---
-# hello
 <div class="reveal">
 
             <!-- Any section element inside of this container is displayed as a slide -->
@@ -18,10 +17,7 @@ categories: test
                 </section>
 
                 <section>
-                    <h1>Test page</h1>
-
-                    
-# this should be 3rd title
+                    <h1>Test highlight</h1>
 
 {% highlight python %}
 def func():
