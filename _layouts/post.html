@@ -8,7 +8,7 @@ comments: true
 </section>
 <section class="meta">
 <span class="author">
-  <a href="{{ site.url }}">{{ site.data.meta.author }}</a>
+  <a href="/">{{ site.data.meta.author }}</a>
 </span>
 <span class="time">
   /
@@ -18,15 +18,15 @@ comments: true
 <span class="license">
   Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC) BY-NC-SA</a>
 </span>
-{% if page.categories %}
+{% if page.categories.size > 0 %}
 <span class="categories">
-  in categories
+  in {% if page.categories.size > 1 %} categories: {% else %} category {% endif %}
   {% for cat in page.categories %}
   <a href="{{ site.url }}/categories/#{{ cat }}" title="{{ cat }}">{{ cat }}</a>&nbsp;
   {% endfor %}
 </span>
 {% endif %}
-{% if page.tags %}
+{% if page.tags.size >  0 %}
 <span class="tags">
   tagged with 
   {% for tag in page.tags %}
