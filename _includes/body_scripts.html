@@ -1,6 +1,13 @@
 <script>
+{% if page.hlstyle %}
     head.load("http://yandex.st/highlightjs/8.0/styles/{{ page.hlstyle }}.min.css");
-
+{% elsif page.hlstylereveal %}
+    head.load("http://yandex.st/highlightjs/8.0/styles/{{ page.hlstylereveal }}.min.css");
+{% elsif page.hlstyleimpress %}
+    head.load("http://yandex.st/highlightjs/8.0/styles/{{ page.hlstyleimpress }}.min.css");
+{% else %}
+    head.load("http://yandex.st/highlightjs/8.0/styles/{{ page.hlstyledf }}.min.css");
+{% endif %}
     head.load("http://yandex.st/highlightjs/8.0/highlight.min.js", {% for lan in page.languages %} "http://yandex.st/highlightjs/8.0/languages/{{ lan }}.min.js", {% endfor %} function() {
         hljs.initHighlightingOnLoad();
     });
