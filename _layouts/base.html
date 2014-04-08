@@ -1,4 +1,5 @@
 ---
+type: general
 hlstyle: github
 ---
 
@@ -12,6 +13,7 @@ hlstyle: github
 		<meta name="author" content="{{ site.data.meta.author }}">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
+		{% if page.type == 'general'}
 		<link rel="stylesheet" href="/css/normalize.css">
 		<link rel="stylesheet" href="/css/main.css">
 		<script src="/js/vendor/modernizr-2.6.2.min.js"></script>
@@ -20,41 +22,44 @@ hlstyle: github
 
 		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/headjs/1.0.3/head.min.js" data-headjs-load="/js/headinit.js"></script>
+		{% endif %}
+
+
+		{% if page.type == 'impress' %}
+		<script src="/lib/js/head.min.js"></script>
+		<link href="/css/impress-demo.css" rel="stylesheet" />
+		{% endif %}
+		
+
+		{% if page.type == 'reveal' %}
+		<link rel="stylesheet" href="/css/reveal/reveal.min.css">
+		<link rel="stylesheet" href="/css/reveal/theme/default.css" id="theme">
+		<script src="/lib/js/head.min.js"></script>
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = '/css/reveal/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+		{% endif %}
+
 
 		{% if page.mathjax %}
 			{% include mathjax.html %}
 		{% endif %}
 
 	</head>
-	<body>
-		<div id="container">
-			<div id="main" role="main">
-				{% include b_old_browser.html %}
+	<body class="impress-not-supported">
 
-				<header>
-					<h1>{{ page.title }}</h1>
-				</header>
-				<nav>
-					<span><a title="home page" class="" href="{{ site.url }}/">home</a></span>
-					<span><a title="about" class="" href="{{ site.url }}/about/">about</a></span>
-					<!-- <span><a title="publication" class="" href="{{ site.url }}/publication/">publication</a></span> -->
-					<span><a title="guestbook" class="" href="{{ site.url }}/guestbook/">guestbook</a></span>
-					<!-- <span><a title="vitae" class="" href="{{ site.url }}/vitae/">vitae</a></span> -->
-					<span><a title="categories" class="" href="{{ site.url }}/categories/">categories</a></span>
-					<span><a title="tags" class="" href="{{ site.url }}/tags/">tags</a></span>
-					<!-- <span><a title="links" class="" href="{{ site.url }}/links/">links</a></span> -->
-					<span><a title="subscribe by RSS" class="" href="{{ site.url }}/feed/">subscribe</a></span>
-				</nav>
+		{{ content }}
 
-				<article class="content">
-				{{ content }}
-
-				{% if page.comments %}
-					{% include comments.html %}
-				{% endif %}
-				</article>
-			</div>
-		</div>
 		{% include b_body_scripts.html %}
 	</body>
 </html>
