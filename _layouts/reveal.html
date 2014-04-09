@@ -6,8 +6,7 @@ hlstylereveal: zenburn
 
 {{ content }}
 
-
-<script src="/js/vendor/reveal.min.js"></script>
+<script src="http://cdn.bootcss.com/reveal.js/2.6.1/js/reveal.min.js"></script>
 
 <script>
 
@@ -29,7 +28,7 @@ hlstylereveal: zenburn
 		// Optional libraries used to extend on reveal.js
 		dependencies: [
 			{ src: '/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-			{ src: '/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: 'http://cdn.bootcss.com/marked/0.3.0/marked.min.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 			{ src: '/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 			// { src: 'http://yandex.st/highlightjs/8.0/highlight.min.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 			{ src: '/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },

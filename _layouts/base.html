@@ -13,27 +13,27 @@ hlstyledf: github
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
 		{% if page.type == 'general' %}
-		<link rel="stylesheet" href="/css/normalize.css">
+		<link href="http://cdn.bootcss.com/normalize/3.0.1/normalize.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="/css/main.css">
-		<script src="/js/vendor/modernizr-2.6.2.min.js"></script>
+		<script src="http://cdn.bootcss.com/modernizr/2.7.1/modernizr.min.js"></script>
 
 		<link rel="stylesheet" href="/css/style.css">
 
 		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/headjs/1.0.3/head.min.js" data-headjs-load="/js/headinit.js"></script>
+		<script src="http://cdn.bootcss.com/headjs/1.0.3/head.min.js" data-headjs-load="/js/headinit.js"></script>
 		{% endif %}
 
 
 		{% if page.type == 'impress' %}
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/headjs/1.0.3/head.min.js"></script>
+		<script src="http://cdn.bootcss.com/headjs/1.0.3/head.min.js"></script>
 		<link href="/css/impress-demo.css" rel="stylesheet" />
 		{% endif %}
 		
 
 		{% if page.type == 'reveal' %}
-		<link rel="stylesheet" href="/css/reveal/reveal.min.css">
-		<link rel="stylesheet" href="/css/reveal/theme/default.css" id="theme">
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/headjs/1.0.3/head.min.js"></script>
+		<link href="http://cdn.bootcss.com/reveal.js/2.6.1/css/reveal.min.css" rel="stylesheet">
+		<link href="http://cdn.bootcss.com/reveal.js/2.6.1/css/theme/default.css" rel="stylesheet">
+		<script src="http://cdn.bootcss.com/headjs/1.0.3/head.min.js"></script>
 		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
 		<script>
 			if( window.location.search.match( /print-pdf/gi ) ) {
