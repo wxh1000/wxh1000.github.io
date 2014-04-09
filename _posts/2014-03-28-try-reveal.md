@@ -27,9 +27,6 @@ def func():
 {% endhighlight %}
 $$ x = 2 \\ y=3 $$
 
-                    <p>
-                        <small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-                    </p>
                 </section>
 
                 <section>
