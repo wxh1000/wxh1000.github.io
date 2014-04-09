@@ -32,20 +32,14 @@ hlstyledf: github
 
 		{% if page.type == 'reveal' %}
 		<link href="http://cdn.bootcss.com/reveal.js/2.6.1/css/reveal.min.css" rel="stylesheet">
+		{% if page.revealtheme %}
+		<link href="http://cdn.bootcss.com/reveal.js/2.6.1/css/theme/{{ page.revealtheme }}.css" rel="stylesheet">
+		{% else %}
 		<link href="http://cdn.bootcss.com/reveal.js/2.6.1/css/theme/default.css" rel="stylesheet">
+		{% endif %}
 		<script src="http://cdn.bootcss.com/headjs/1.0.3/head.min.js"></script>
-		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-		<script>
-			if( window.location.search.match( /print-pdf/gi ) ) {
-				var link = document.createElement( 'link' );
-				link.rel = 'stylesheet';
-				link.type = 'text/css';
-				link.href = '/css/reveal/print/pdf.css';
-				document.getElementsByTagName( 'head' )[0].appendChild( link );
-			}
-		</script>
 		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
+		<script src="http://cdn.bootcss.com/reveal.js/2.6.1/lib/js/html5shiv.js"></script>
 		<![endif]-->
 		{% endif %}
 

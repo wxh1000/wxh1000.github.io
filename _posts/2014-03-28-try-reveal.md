@@ -1,8 +1,10 @@
 ---
 layout: reveal
+revealtheme: night
 title:  "Try reveal"
 date:   2014-03-28 11:41:09
 categories: demo
+mathjax: true
 ---
 <div class="reveal">
 
@@ -17,12 +19,13 @@ categories: demo
                 </section>
 
                 <section>
-                    <h1>Test highlight</h1>
+                    <h1>Code and Math</h1>
 
 {% highlight python %}
 def func():
     return 'hi!'
 {% endhighlight %}
+$$ x = 2 \\ y=3 $$
 
                     <p>
                         <small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
