@@ -10,9 +10,9 @@ layout: page
 </div>
 
 {% for tag in site.tags %}
-  <p id="{{ tag[0] }}"  style="font-weight: bold;margin-top:15px; margin-bottom:3px;">{{ tag[0] }}</p>
+  <p id="{{ tag[0] }}" class="listing-seperator">{{ tag[0] }}</p>
 {% for post in tag[1] %}
-  <p style="margin: 0px 0px 5px;">
+  <p class="listing-item">
   <time class="text-muted" datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
   <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
   </p>

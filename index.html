@@ -8,9 +8,9 @@ quote: true
   {% capture y %}{{post.date | date:"%Y"}}{% endcapture %}
   {% if year != y %}
     {% assign year = y %}
-    <p style="font-weight: bold;margin-top:15px; margin-bottom:3px;">{{ y }}</p>
+    <p class="listing-seperator">{{ y }}</p>
   {% endif %}
-  <p style="margin: 0px 0px 5px;">
+  <p class="listing-item">
     <time class="text-muted" datetime="{{ post.date | date:"%Y-%m-%d"}}" >{{ post.date | date:"%Y-%m-%d" }}</time>
     <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
   </p>
