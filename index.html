@@ -1,19 +1,17 @@
 ---
 title: Aeol's Blog
 layout: page
+quote: true
 ---
 
-<ul class="listing">
 {% for post in site.posts %}
   {% capture y %}{{post.date | date:"%Y"}}{% endcapture %}
   {% if year != y %}
     {% assign year = y %}
-    <li class="listing-seperator">{{ y }}</li>
+    <p style="font-weight: bold;margin-top:15px; margin-bottom:3px;">{{ y }}</p>
   {% endif %}
-  <li class="listing-item">
-    <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+  <p style="margin: 0px 0px 5px;">
+    <time class="text-muted" datetime="{{ post.date | date:"%Y-%m-%d"}}" >{{ post.date | date:"%Y-%m-%d" }}</time>
     <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-  </li>
+  </p>
 {% endfor %}
-</ul>
-

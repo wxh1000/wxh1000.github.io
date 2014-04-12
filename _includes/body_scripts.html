@@ -1,24 +1,103 @@
 <script>
 {% if page.hlstyle %}
-    head.load("http://cdn.bootcss.com/highlight.js/8.0/styles/{{ page.hlstyle }}.min.css");
+	head.load("http://cdn.bootcss.com/highlight.js/8.0/styles/{{ page.hlstyle }}.min.css");
 {% elsif page.hlstylereveal %}
-    head.load("http://cdn.bootcss.com/highlight.js/8.0/styles/{{ page.hlstylereveal }}.min.css");
+	head.load("http://cdn.bootcss.com/highlight.js/8.0/styles/{{ page.hlstylereveal }}.min.css");
 {% elsif page.hlstyleimpress %}
-    head.load("http://cdn.bootcss.com/highlight.js/8.0/styles/{{ page.hlstyleimpress }}.min.css");
+	head.load("http://cdn.bootcss.com/highlight.js/8.0/styles/{{ page.hlstyleimpress }}.min.css");
 {% else %}
-    head.load("http://cdn.bootcss.com/highlight.js/8.0/styles/{{ page.hlstyledf }}.min.css");
+	head.load("http://cdn.bootcss.com/highlight.js/8.0/styles/{{ page.hlstyledf }}.min.css");
 {% endif %}
-    head.load("http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js", {% for lan in page.languages %} "http://cdn.bootcss.com/highlight.js/8.0/languages/{{ lan }}.min.js", {% endfor %} function() {
-        hljs.initHighlightingOnLoad();
-    });
+	head.load("http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js", {% for lan in page.languages %} "http://cdn.bootcss.com/highlight.js/8.0/languages/{{ lan }}.min.js", {% endfor %} function() {
+		hljs.initHighlightingOnLoad();
+	});
+
+
+{% if page.type == 'general' %}
+	head.load(["http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js",
+		"http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css",
+		"http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js",
+		"/css/screen.css"
+	]);
+{% endif %}
+
+
+{% if page.type == 'impress' %}
+	 head.load("/css/impress-demo.css",
+		"http://cdn.bootcss.com/impress.js/0.5.3/impress.min.js", 
+		function() {
+			impress().init();;
+	});
+{% endif %}
+		
+
+{% if page.type == 'reveal' %}
+	head.load(["http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js",
+		"http://cdn.bootcss.com/reveal.js/2.6.1/css/reveal.min.css",
+		{% if page.revealtheme %}
+		"http://cdn.bootcss.com/reveal.js/2.6.1/css/theme/{{ page.revealtheme }}.css"
+		{% else %}
+		"http://cdn.bootcss.com/reveal.js/2.6.1/css/theme/default.css"
+		{% endif %}
+	]);
+
+	// Full list of configuration options available here:
+	// https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+		controls: true,
+		progress: true,
+		history: true,
+		center: true,
+
+		theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+		transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+		// Parallax scrolling
+		// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+		// parallaxBackgroundSize: '2100px 900px',
+
+		// Optional libraries used to extend on reveal.js
+		dependencies: [
+			{ src: 'http://cdn.bootcss.com/reveal.js/2.6.1/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+			{ src: 'http://cdn.bootcss.com/reveal.js/2.6.1/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: 'http://cdn.bootcss.com/reveal.js/2.6.1/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			// { src: 'http://yandex.st/highlightjs/8.0/highlight.min.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+			{ src: 'http://cdn.bootcss.com/reveal.js/2.6.1/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+			{ src: 'http://cdn.bootcss.com/reveal.js/2.6.1/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+		]
+	});   
+{% endif %}
 </script>
+
+{% if page.mathjax %}
+	<script type="text/x-mathjax-config">
+	  MathJax.Hub.Config({
+		extensions: ["tex2jax.js"],
+		jax: ["input/TeX", "output/HTML-CSS"],
+		tex2jax: {
+		  inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+		  displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+		  processEscapes: true
+		},
+		"HTML-CSS": { availableFonts: ["TeX"] }
+	  });
+	</script>
+
+	<script>
+		head.load('http://cdn.bootcss.com/mathjax/2.3/MathJax.js?config=TeX-AMS_HTML')
+	</script>
+{% endif %}
+
+<!--[if lt IE 9]>
+		<script src="http://cdn.bootcss.com/reveal.js/2.6.1/lib/js/html5shiv.js"></script>
+<![endif]-->
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>
-    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-    e.src='//www.google-analytics.com/analytics.js';
-    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-    ga('create','UA-33189838-2');ga('send','pageview');
+	(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+	function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+	e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+	e.src='//www.google-analytics.com/analytics.js';
+	r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+	ga('create','UA-33189838-2');ga('send','pageview');
 </script>

@@ -12,41 +12,7 @@ hlstyledf: github
 		<meta name="author" content="{{ site.data.meta.author }}">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
-		{% if page.type == 'general' %}
-		<link href="http://cdn.bootcss.com/normalize/3.0.1/normalize.min.css" rel="stylesheet">
-		<link rel="stylesheet" href="/css/main.css">
-		<script src="http://cdn.bootcss.com/modernizr/2.7.1/modernizr.min.js"></script>
-
-		<link rel="stylesheet" href="/css/style.css">
-
-		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-		<script src="http://cdn.bootcss.com/headjs/1.0.3/head.min.js" data-headjs-load="/js/headinit.js"></script>
-		{% endif %}
-
-
-		{% if page.type == 'impress' %}
 		<script src="http://cdn.bootcss.com/headjs/1.0.3/head.min.js"></script>
-		<link href="/css/impress-demo.css" rel="stylesheet" />
-		{% endif %}
-		
-
-		{% if page.type == 'reveal' %}
-		<link href="http://cdn.bootcss.com/reveal.js/2.6.1/css/reveal.min.css" rel="stylesheet">
-		{% if page.revealtheme %}
-		<link href="http://cdn.bootcss.com/reveal.js/2.6.1/css/theme/{{ page.revealtheme }}.css" rel="stylesheet">
-		{% else %}
-		<link href="http://cdn.bootcss.com/reveal.js/2.6.1/css/theme/default.css" rel="stylesheet">
-		{% endif %}
-		<script src="http://cdn.bootcss.com/headjs/1.0.3/head.min.js"></script>
-		<!--[if lt IE 9]>
-		<script src="http://cdn.bootcss.com/reveal.js/2.6.1/lib/js/html5shiv.js"></script>
-		<![endif]-->
-		{% endif %}
-
-
-		{% if page.mathjax %}
-			{% include mathjax.html %}
-		{% endif %}
 
 	</head>
 	<body class="impress-not-supported">
