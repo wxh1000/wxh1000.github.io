@@ -52,7 +52,7 @@ end
 
 ## highlight.js R code.
 
-{% highlight r %}
+{% highlight r linenos %}
 #  3.5
 setwd("D:/")
 a = read.table("m-intc7308.txt", head = T)
@@ -76,7 +76,7 @@ myfit
 # 向前 5 步预测
 fc = ugarchforecast(myfit, lts1, n.ahead = 5)			
 fc
-
+# Now try a very very very long long long long long long long long long long long long long long long long long long long long long long line.
 {% endhighlight %}
 
 It seems that very limited keywords/commands are recognized. Various user defined functions available in addon packages, like `ugarchfit`, are not expected to be recognized, but what about `setwd`?
