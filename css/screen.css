@@ -4,5 +4,5 @@ body {padding-top: 60px;}
 .listing-seperator {font-weight: bold;margin-top:15px; margin-bottom:3px; font-size: 130%;}
 .listing-item {margin: 0px 0px 5px; font-size: 110%;}
 .meta{text-align:right;font-size:12px;}
-pre {overflow-x: auto;}
-pre code {verflow-wrap: normal;white-space: pre;}
+pre {overflow-x: auto;} 
+pre code {word-wrap: normal;white-space: pre;} 
