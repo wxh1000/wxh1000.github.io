@@ -32,15 +32,16 @@
 		
 
 {% if page.type == 'reveal' %}
-	head.load(["http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js",
-		"http://cdn.bootcss.com/reveal.js/2.6.1/css/reveal.min.css",
+	head.load(["http://cdn.bootcss.com/reveal.js/2.6.1/css/reveal.min.css",
 		{% if page.revealtheme %}
 		"http://cdn.bootcss.com/reveal.js/2.6.1/css/theme/{{ page.revealtheme }}.css"
 		{% else %}
 		"http://cdn.bootcss.com/reveal.js/2.6.1/css/theme/default.css"
 		{% endif %}
 	]);
-
+	head.load("http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js",
+		"http://cdn.bootcss.com/reveal.js/2.6.1/js/reveal.min.js",
+		function(){
 	// Full list of configuration options available here:
 	// https://github.com/hakimel/reveal.js#configuration
 	Reveal.initialize({
@@ -65,6 +66,7 @@
 			{ src: 'http://cdn.bootcss.com/reveal.js/2.6.1/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
 			{ src: 'http://cdn.bootcss.com/reveal.js/2.6.1/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 		]
+	});
 	});   
 {% endif %}
 </script>
