@@ -1,5 +1,6 @@
 ---
 layout: post
+title: 我读《平如美棠：我俩的故事》
 categories:
   - 我读
   - reading
