@@ -18,7 +18,7 @@ upate your Stata to latest version.
 
 By running `set trace on`, we can view the very steps running this command. In my environment and test arguments, the error occurs here:
 
-{% hilight text %}
+{% highlight text %}
   - if ("`indicator'" != "") {
   = if ("" != "") {
     capture : copy "`servername'/`language'/countries/`country2'/`parameter'format=csv" `temp'
