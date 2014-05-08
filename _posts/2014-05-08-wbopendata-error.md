@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Stata: wbopendata temp file error r(601) and solution
+title: "Stata: wbopendata temp file error r(601) and solution"
 categories:
   - stata
   - 一本正经
